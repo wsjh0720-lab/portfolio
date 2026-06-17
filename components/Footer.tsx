@@ -1,9 +1,7 @@
 import Link from 'next/link'
 
 const socialLinks = [
-  { label: 'Bilibili', href: '#' },
-  { label: 'Instagram', href: '#' },
-  { label: '微博', href: '#' },
+  { label: '新片场', href: 'https://www.xinpianchang.com/u10110237?from=navigator' },
 ]
 
 export default function Footer() {
@@ -13,7 +11,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-[30px]">
           {/* Copyright */}
           <p className="font-sans text-lg text-ink-obsidian/60">
-            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+            &copy; {new Date().getFullYear()} 人生如逆旅，我亦是行人
           </p>
 
           {/* Social Links */}

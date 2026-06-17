@@ -19,10 +19,10 @@ export default function ContactPage() {
                 Email
               </h2>
               <a
-                href="mailto:hello@yourname.com"
+                href="mailto:wsjh0723@126.com"
                 className="font-display text-display-lg md:text-display-xl text-ink-obsidian hover:text-deep-midnight transition-colors duration-200 leading-[1]"
               >
-                hello@yourname.com
+                wsjh0723@126.com
               </a>
             </div>
 
@@ -32,10 +32,7 @@ export default function ContactPage() {
               </h2>
               <div className="flex flex-col gap-[12px]">
                 {[
-                  { platform: 'Bilibili', handle: '@yourname', url: '#' },
-                  { platform: 'Instagram', handle: '@yourname', url: '#' },
-                  { platform: '微博', handle: '@yourname', url: '#' },
-                  { platform: '微信', handle: 'YourName_Studio', url: '#' },
+                  { platform: '微信', handle: 'jonsnowlalaland', url: '#' },
                 ].map((item) => (
                   <a
                     key={item.platform}

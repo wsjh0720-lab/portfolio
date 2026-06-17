@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { WorkItem, PhotoSubcategory } from '@/data/types'
+import { works } from '@/lib/works-static'
 
 const subcategories: { key: PhotoSubcategory | 'all'; label: string }[] = [
   { key: 'all', label: '全部' },
@@ -13,30 +14,12 @@ const subcategories: { key: PhotoSubcategory | 'all'; label: string }[] = [
 
 export default function PhotoPage() {
   const [activeSub, setActiveSub] = useState<PhotoSubcategory | 'all'>('all')
-  const [allWorks, setAllWorks] = useState<(WorkItem & { category: 'photo' })[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/works')
-      .then((r) => r.json())
-      .then((data: WorkItem[]) => {
-        setAllWorks(data.filter((w): w is WorkItem & { category: 'photo' } => w.category === 'photo'))
-        setLoading(false)
-      })
-  }, [])
+  const photoWorks = works.filter((w): w is WorkItem & { category: 'photo' } => w.category === 'photo')
 
   const filteredWorks = useMemo(() => {
-    if (activeSub === 'all') return allWorks.sort((a, b) => b.year - a.year)
-    return allWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => b.year - a.year)
-  }, [allWorks, activeSub])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-canvas-parchment">
-        <p className="font-sans text-lg text-ink-obsidian/50">加载中…</p>
-      </div>
-    )
-  }
+    if (activeSub === 'all') return photoWorks.sort((a, b) => b.year - a.year)
+    return photoWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => b.year - a.year)
+  }, [activeSub])
 
   return (
     <div className="px-[var(--card-padding)] py-section">

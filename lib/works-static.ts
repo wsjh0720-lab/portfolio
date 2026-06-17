@@ -1,4 +1,5 @@
-[
+import { WorkItem } from "@/data/types";
+export const works: WorkItem[] = [
   {
     "id": "dir-1",
     "title": "陆仙人vivo",
@@ -1527,4 +1528,4 @@
       "/uploads/笔记本1.jpg"
     ]
   }
-]
+];

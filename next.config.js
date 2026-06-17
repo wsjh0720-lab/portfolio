@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 不再用静态导出——在线编辑需要 API 路由
+  output: 'export',
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'picsum.photos' },
-      { protocol: 'https', hostname: '**' },
-    ],
+    unoptimized: true,
   },
+  trailingSlash: true,
 }
 
 module.exports = nextConfig

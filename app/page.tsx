@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 const heroEntries = [
-  { label: 'Video', sub: '查看作品', href: '/video', image: 'https://picsum.photos/seed/video-hero/800/1000' },
-  { label: 'Photo', sub: '查看作品', href: '/photo', image: 'https://picsum.photos/seed/photo-hero/800/1000' },
-  { label: 'AI',    sub: '查看作品', href: '/ai',    image: 'https://picsum.photos/seed/ai-hero/800/1000' },
+  { label: 'Video', sub: '查看作品', href: '/video', image: '/hero-video.jpg' },
+  { label: 'Photo', sub: '查看作品', href: '/photo', image: '/hero-photo.jpg' },
+  { label: 'AI',    sub: '查看作品', href: '/ai',    image: '/hero-ai.jpg' },
 ]
 
 export default function HomePage() {

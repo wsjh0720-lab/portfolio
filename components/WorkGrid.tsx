@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { WorkItem } from '@/data/types'
+import { works } from '@/lib/works-static'
 import CategoryFilter from './CategoryFilter'
 import WorkCard from './WorkCard'
 
@@ -10,17 +11,7 @@ type MainCategory = 'all' | 'video' | 'photo' | 'ai'
 export default function WorkGrid() {
   const [mainFilter, setMainFilter] = useState<MainCategory>('all')
   const [subFilter, setSubFilter] = useState<string | null>(null)
-  const [works, setWorks] = useState<WorkItem[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/works')
-      .then((r) => r.json())
-      .then((data) => {
-        setWorks(data)
-        setLoading(false)
-      })
-  }, [])
+  const [loading, setLoading] = useState(false)
 
   const filteredWorks = useMemo(() => {
     let result: WorkItem[] = works

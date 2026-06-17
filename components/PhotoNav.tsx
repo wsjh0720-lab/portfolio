@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { WorkItem } from '@/data/types'
+import { works } from '@/lib/works-static'
 
 interface PhotoNavProps {
   currentId: string
@@ -15,22 +16,18 @@ export default function PhotoNav({ currentId, category, subcategory }: PhotoNavP
   const [neighbors, setNeighbors] = useState<{ prev: string | null; next: string | null }>({ prev: null, next: null })
 
   useEffect(() => {
-    fetch('/api/works')
-      .then((r) => r.json())
-      .then((works: WorkItem[]) => {
-        const siblings = works
-          .filter((w) => w.category === category && w.subcategory === subcategory)
-          .sort((a, b) => {
-            const aNum = parseInt(a.id.split('-').pop() || '0')
-            const bNum = parseInt(b.id.split('-').pop() || '0')
-            return aNum - bNum
-          })
-        const idx = siblings.findIndex((w) => w.id === currentId)
-        setNeighbors({
-          prev: idx > 0 ? siblings[idx - 1].id : null,
-          next: idx < siblings.length - 1 ? siblings[idx + 1].id : null,
-        })
+    const siblings = (works as WorkItem[])
+      .filter((w) => w.category === category && w.subcategory === subcategory)
+      .sort((a, b) => {
+        const aNum = parseInt(a.id.split('-').pop() || '0')
+        const bNum = parseInt(b.id.split('-').pop() || '0')
+        return aNum - bNum
       })
+    const idx = siblings.findIndex((w) => w.id === currentId)
+    setNeighbors({
+      prev: idx > 0 ? siblings[idx - 1].id : null,
+      next: idx < siblings.length - 1 ? siblings[idx + 1].id : null,
+    })
   }, [currentId, category, subcategory])
 
   const goTo = (id: string) => {
@@ -49,22 +46,10 @@ export default function PhotoNav({ currentId, category, subcategory }: PhotoNavP
   return (
     <>
       {neighbors.prev && (
-        <button
-          onClick={() => goTo(neighbors.prev!)}
-          className={`${arrowClass} left-0 md:-left-[60px]`}
-          aria-label="上一张"
-        >
-          ‹
-        </button>
+        <button onClick={() => goTo(neighbors.prev!)} className={`${arrowClass} left-0 md:-left-[60px]`} aria-label="上一张">‹</button>
       )}
       {neighbors.next && (
-        <button
-          onClick={() => goTo(neighbors.next!)}
-          className={`${arrowClass} right-0 md:-right-[60px]`}
-          aria-label="下一张"
-        >
-          ›
-        </button>
+        <button onClick={() => goTo(neighbors.next!)} className={`${arrowClass} right-0 md:-right-[60px]`} aria-label="下一张">›</button>
       )}
     </>
   )

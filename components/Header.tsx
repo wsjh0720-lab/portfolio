@@ -7,7 +7,6 @@ const navLinks = [
   { label: 'Video', href: '/video' },
   { label: 'Photo', href: '/photo' },
   { label: 'AI', href: '/ai' },
-  { label: '关于', href: '/about' },
   { label: '联系', href: '/contact' },
 ]
 

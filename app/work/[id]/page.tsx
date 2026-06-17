@@ -1,15 +1,15 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { readWorks } from '@/lib/works-store'
+import { works } from '@/lib/works-static'
 import VideoEmbed from '@/components/VideoEmbed'
 import PhotoNav from '@/components/PhotoNav'
 
 export function generateStaticParams() {
-  return readWorks().map((work) => ({ id: work.id }))
+  return works.map((work) => ({ id: work.id }))
 }
 
 export default function WorkDetailPage({ params }: { params: { id: string } }) {
-  const work = readWorks().find((w) => w.id === params.id)
+  const work = works.find((w) => w.id === params.id)
 
   if (!work) {
     notFound()
