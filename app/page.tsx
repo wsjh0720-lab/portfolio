@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 const heroEntries = [
-  { label: 'Video', sub: '查看作品', href: '/video', image: '/hero-video.jpg' },
-  { label: 'Photo', sub: '查看作品', href: '/photo', image: '/hero-photo.jpg' },
-  { label: 'AI',    sub: '查看作品', href: '/ai',    image: '/hero-ai.jpg' },
+  { label: 'Video', sub: '查看作品', href: '/video', image: '/portfolio/hero-video.jpg' },
+  { label: 'Photo', sub: '查看作品', href: '/photo', image: '/portfolio/hero-photo.jpg' },
+  { label: 'AI',    sub: '查看作品', href: '/ai',    image: '/portfolio/hero-ai.jpg' },
 ]
 
 export default function HomePage() {
