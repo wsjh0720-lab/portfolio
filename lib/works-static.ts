@@ -1527,5 +1527,16 @@ export const works: WorkItem[] = [
     "images": [
       "/uploads/笔记本1.jpg"
     ]
+  },
+  {
+    "id": "post-6",
+    "title": "对话凯文凯利",
+    "category": "video",
+    "subcategory": "后期",
+    "coverImage": "/uploads/covers/33.jpeg",
+    "description": "《经济学人·商论》总编辑吴晨对话凯文·凯利",
+    "year": 2025,
+    "bilibiliId": "BV1MNju6UETi",
+    "duration": "5:25"
   }
 ];
