@@ -17,7 +17,7 @@ export default function AIPage() {
 
   const filteredWorks = useMemo(() => {
     if (activeSub === 'all') return aiWorks.sort((a, b) => b.year - a.year)
-    return aiWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => b.year - a.year)
+    return aiWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => a.year - b.year || (parseInt(a.id.split('-').pop()||'0') - parseInt(b.id.split('-').pop()||'0')))
   }, [activeSub])
 
   return (
