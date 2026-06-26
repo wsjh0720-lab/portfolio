@@ -18,8 +18,8 @@ export default function VideoPage() {
   const videoWorks = works.filter((w): w is WorkItem & { category: 'video' } => w.category === 'video')
 
   const filteredWorks = useMemo(() => {
-    if (activeSub === 'all') return videoWorks.sort((a, b) => b.year - a.year)
-    return videoWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => b.year - a.year)
+    if (activeSub === 'all') return videoWorks.sort((a, b) => a.year - b.year || (parseInt(a.id.split('-').pop()||'0') - parseInt(b.id.split('-').pop()||'0')))
+    return videoWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => parseInt(a.id.split('-').pop()||'0') - parseInt(b.id.split('-').pop()||'0'))
   }, [activeSub])
 
   return (
