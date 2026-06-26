@@ -17,8 +17,8 @@ export default function PhotoPage() {
   const photoWorks = works.filter((w): w is WorkItem & { category: 'photo' } => w.category === 'photo')
 
   const filteredWorks = useMemo(() => {
-    if (activeSub === 'all') return photoWorks.sort((a, b) => b.year - a.year)
-    return photoWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => b.year - a.year)
+    if (activeSub === 'all') return photoWorks.sort((a, b) => a.year - b.year || (parseInt(a.id.split('-').pop()||'0') - parseInt(b.id.split('-').pop()||'0')))
+    return photoWorks.filter((w) => w.subcategory === activeSub).sort((a, b) => a.year - b.year || (parseInt(a.id.split('-').pop()||'0') - parseInt(b.id.split('-').pop()||'0')))
   }, [activeSub])
 
   return (
